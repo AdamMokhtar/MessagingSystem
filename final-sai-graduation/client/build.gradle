@@ -1,0 +1,28 @@
+plugins {
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+    id 'application'
+}
+
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+dependencies {
+    implementation project(":shared")
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation group: 'org.apache.activemq', name: 'activemq-client', version: '5.15.9'
+}
+
+jar {
+    archiveFileName = 'loan-client.jar' // name of the generated .jar file
+
+    manifest {    // class where the main method is
+        attributes 'Main-Class': 'graduation.client.gui.ClientMain'
+    }
+    // add all dependencies to the executable .jar file
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
+
+application {
+    setMainClassName('graduation.client.gui.ClientMain')
+}

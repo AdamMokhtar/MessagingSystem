@@ -1,0 +1,37 @@
+plugins {
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+    id 'application'
+}
+
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+
+dependencies {
+    implementation project(":shared")
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation group: 'org.apache.activemq', name: 'activemq-client', version: '5.15.9'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    //for the API calls
+    implementation group: 'org.glassfish.jersey.bundles', name: 'jaxrs-ri', version: '2.33'
+    implementation group: 'org.glassfish.jersey.core', name: 'jersey-client', version: '2.33'
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation group: 'org.json', name: 'json', version: '20131018'
+    // https://mvnrepository.com/artifact/org.mariuszgromada.math/MathParser.org-mXparser
+    implementation group: 'org.mariuszgromada.math', name: 'MathParser.org-mXparser', version: '4.0.0'
+}
+
+/*jar {
+    archiveFileName = 'graduation.jar' // name of the generated .jar file
+
+    manifest {    // class where the main method is
+        attributes 'Main-Class': 'graduation.gui.graduationMain'
+    }
+    // add all dependencies to the executable .jar file
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}*/
+
+application {
+    setMainClassName('graduation.gui.GraduationMain')
+}

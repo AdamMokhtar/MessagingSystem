@@ -1,0 +1,15 @@
+subprojects {
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        // Logging
+        implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.0-alpha0'
+        implementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha0'
+    }
+
+    version = '1.0'
+}
